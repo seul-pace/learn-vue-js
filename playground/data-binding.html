@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
+        <p>{{ doubleNum }}</p>
+        <div v-if="loading">
+            Loading...
+        </div>
+        <div v-else>
+            test user has been logged in
+        </div>
+        <div v-show="loading">
+            Loading...
+        </div>
+        <!-- v-if, v-else는 돔을 아예 제거하는 것 show는 css 스타일로 display:none으로 변경해주는 것 -->
+
+        <input type="text" v-model="message">
+        <p>{{ message }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                // 데이터 바인딩: 콧수염태그로 바로 불러오는 거
+                // 뷰 디렉티브: v- 로 시작하는 것들
+                num: 10,
+                uuid: 'abc1234',
+                name: 'text-blue',
+                loading: true,
+                message: ''
+            },
+            computed: {
+                doubleNum: function() {
+                    return this.num * 2;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
